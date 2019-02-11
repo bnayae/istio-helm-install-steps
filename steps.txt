@@ -2,10 +2,6 @@
 ref: https://github.com/istio/istio/tree/master/install/kubernetes/helm/istio 
 ref: https://istio.io/docs/setup/kubernetes/helm-install/
 
-issue related:
-ref: https://github.com/istio/istio.io/issues/2787
-
-
 folw:
 // Download latest Istio version:
 https://github.com/istio/istio/releases
@@ -26,4 +22,9 @@ helm dep update install/kubernetes/helm/istio
 // install istio 
 helm install install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
 helm install install/kubernetes/helm/istio --name istio --namespace istio-system
+
+// Graphana (https://istio.io/docs/tasks/telemetry/using-istio-dashboard/): 
+kubectl -n istio-system get svc prometheus
+kubectl -n istio-system get svc grafana
+helm upgrade --recreate-pods --namespace istio-system --set grafana.enabled=true istio install/kubernetes/helm/istio
 
