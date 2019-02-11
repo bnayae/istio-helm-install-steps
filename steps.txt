@@ -1,0 +1,29 @@
+
+ref: https://github.com/istio/istio/tree/master/install/kubernetes/helm/istio 
+ref: https://istio.io/docs/setup/kubernetes/helm-install/
+
+issue related:
+ref: https://github.com/istio/istio.io/issues/2787
+
+
+folw:
+// Download latest Istio version:
+https://github.com/istio/istio/releases
+
+// cmd
+extract and
+cd to the folder
+
+// If a service account has not already been installed for Tiller, install one:
+kubectl apply -f install/kubernetes/helm/helm-service-account.yaml
+
+//Add istio.io chart repository and point to the daily release:
+helm repo add istio.io https://storage.googleapis.com/istio-prerelease/daily-build/master-latest-daily/charts
+
+// Build the Helm dependencies: (don't work right from the download)
+helm dep update install/kubernetes/helm/istio
+
+// install istio 
+helm install install/kubernetes/helm/istio-init --name istio-init --namespace istio-system
+helm install install/kubernetes/helm/istio --name istio --namespace istio-system
+
