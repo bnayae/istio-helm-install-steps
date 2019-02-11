@@ -1,0 +1,32 @@
+forllow the steps.txt before installing the sample.
+
+ref: https://istio.io/docs/examples/bookinfo/
+
+cd to the root folder of samples
+kubectl create ns bookinfo
+kubectl label namespace bookinfo istio-injection=enabled 
+
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml --namespace bookinfo 
+kubectl get pods --namespace bookinfo
+kubectl get services --namespace bookinfo
+
+kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml --namespace bookinfo
+kubectl get gateway --namespace bookinfo
+
+// check external load-balancer suport
+kubectl get svc istio-ingressgateway -n istio-system
+
+// etermining the ingress host
+kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].hostname}'
+
+// set/export ingress (set for windows / export for linux)
+set INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+set INGRESS_HOST=$(localhost)
+
+
+// check it (hit refresh a few times)
+http://localhost/productpage
+
+
+
+
