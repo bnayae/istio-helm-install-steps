@@ -28,5 +28,19 @@ set INGRESS_HOST=$(localhost)
 http://localhost/productpage
 
 
+// playing with the versions:
+kubectl apply -n bookinfo -f samples/bookinfo/networking/virtual-service-all-v1.yaml
+kubectl apply -n bookinfo -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
+kubectl apply -n bookinfo -f samples/bookinfo/networking/virtual-service-ratings-test-abort.yaml
+kubectl apply -n bookinfo -f samples/bookinfo/networking/virtual-service-ratings-test-delay.yaml
+kubectl apply -n bookinfo -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
+kubectl apply -n bookinfo -f samples/bookinfo/networking/virtual-service-reviews-80-20.yaml
+kubectl apply -n bookinfo -f samples/bookinfo/networking/virtual-service-reviews-90-10.yaml
+kubectl apply -n bookinfo -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
+kubectl apply -n bookinfo -f samples/bookinfo/networking/virtual-service-reviews-v2-v3.yaml
+kubectl apply -n bookinfo -f samples/bookinfo/networking/virtual-service-reviews-v3.yaml
+
+// cleanup
+kubectl delete -f samples/bookinfo/networking/virtual-service-all-v1.yaml
 
 
