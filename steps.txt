@@ -1,10 +1,10 @@
 
-ref: https://github.com/istio/istio/tree/master/install/kubernetes/helm/istio 
-ref: https://istio.io/docs/setup/kubernetes/helm-install/
+[istio at GitHub](https://github.com/istio/istio/tree/master/install/kubernetes/helm/istio)   
+[istio helm install](https://istio.io/docs/setup/kubernetes/helm-install/)  
 
 folw:
 // Download latest Istio version:
-https://github.com/istio/istio/releases
+[istio releaes](https://github.com/istio/istio/releases)  
 
 // cmd
 extract and
