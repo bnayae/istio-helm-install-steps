@@ -25,7 +25,6 @@ Build the Helm dependencies: (don't work right from the download)
 
 ### install istio 
 helm install install/kubernetes/helm/istio-init --name istio-init --namespace istio-system  
-helm install install/kubernetes/helm/istio --name istio --namespace istio-system  
 
 ### Grafana
 Grafana (https://istio.io/docs/tasks/telemetry/using-istio-dashboard/):  
